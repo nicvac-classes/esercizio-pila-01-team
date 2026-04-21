@@ -1,26 +1,49 @@
-//LEGGERE LE ISTRUZIONI NEL FILE README.md
+import java.util.ArrayList;
 
-//Import di Classi Java necessarie al funzionamento del programma
-import java.util.Scanner;
+public class Pila<T> {
+    
+    private ArrayList<T> elementi;
 
-// Classe principale, con metodo main
-class Esercizio {
-    // Il programma parte con una chiamata a main().
-    public static void main(String args[])
-    {
-        //Variabili del programma
-        String nome;
+    // Costruttore
+    public Pila() {
+        elementi = new ArrayList<>();
+    }
 
-        //Creo l'oggetto in per l'input da tastiera
-        Scanner in = new Scanner( System.in );
+    // Verifica se è vuota
+    public boolean isEmpty() {
+        return elementi.isEmpty();
+    }
 
-        //Leggo l'input da tastiera
-        System.out.print("Inserisci il tuo nome: ");
-        nome = in.nextLine();
+    // Inserisce un elemento in cima
+    public void push(T dato) {
+        elementi.add(dato);
+    }
 
-        //Output del nome acquisito da tastiera
-        System.out.println("Ciao "+nome+"!");
+    // Rimuove e restituisce l'elemento in cima
+    public T pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("Pila vuota!");
+        }
+        return elementi.remove(elementi.size() - 1);
+    }
+
+    // Restituisce l'elemento in cima senza rimuoverlo
+    public T peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("Pila vuota!");
+        }
+        return elementi.get(elementi.size() - 1);
+    }
+
+    // Numero di elementi
+    public int size() {
+        return elementi.size();
+    }
+
+    // Rappresentazione testuale
+    @Override
+    public String toString() {
+        return elementi.toString();
     }
 }
-
 //LEGGERE LE ISTRUZIONI NEL FILE README.md
